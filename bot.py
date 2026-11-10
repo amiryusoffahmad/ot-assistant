@@ -100,7 +100,7 @@ def create_google_doc_report(soap_text):
 async def process_and_create_doc(update: Update, prompt_text=None, audio_bytes=None):
     try:
         model = genai.GenerativeModel(
-            model_name="models/gemini-1.5-flash",
+            model_name="models/gemini-3.8-flash",
             system_instruction=OT_SYSTEM_INSTRUCTION
         )
         
