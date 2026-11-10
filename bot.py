@@ -160,8 +160,8 @@ if __name__ == "__main__":
     # Jalankan Bot Telegram
     app = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
     
-    app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_text))
-    app.add_handler(filters.VOICE, handle_voice)
+app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_text))
+app.add_handler(MessageHandler(filters.VOICE, handle_voice))  # <-- Dibungkus dengan MessageHandler
     
     print("Bot Telegram OT PA (Dengan GDocs Auto-Create) sedang berjalan...")
     app.run_polling()
