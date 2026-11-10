@@ -152,7 +152,7 @@ async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
         os.remove(audio_path)
 
 if __name__ == "__main__":
-    # Jalankan Flask server dalam background thread untuk elak timeout
+    # Jalankan Flask server dalam background thread
     t = threading.Thread(target=run_web)
     t.daemon = True
     t.start()
@@ -160,8 +160,8 @@ if __name__ == "__main__":
     # Jalankan Bot Telegram
     app = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
     
-app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_text))
-app.add_handler(MessageHandler(filters.VOICE, handle_voice))  # <-- Dibungkus dengan MessageHandler
+    app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_text))
+    app.add_handler(MessageHandler(filters.VOICE, handle_voice))
     
     print("Bot Telegram OT PA (Dengan GDocs Auto-Create) sedang berjalan...")
     app.run_polling()
